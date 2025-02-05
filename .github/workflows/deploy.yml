@@ -35,8 +35,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Slidev
-        run: npm install -g @slidev/cli @slidev/theme-seriph vite
+      - name: Install Slidev and Dependencies
+        run: |
+          cd slides
+          npm install  # Ensures vite is installed
+          npm install -g @slidev/cli @slidev/theme-seriph vite
 
       - name: Build Slidev slides
         run: |
