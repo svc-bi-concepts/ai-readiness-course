@@ -36,7 +36,7 @@ jobs:
           node-version: '20'
 
       - name: Install Slidev
-        run: npm install -g @slidev/cli
+        run: npm install -g @slidev/cli @slidev/theme-seriph
 
       - name: Build Slidev slides
         run: |
