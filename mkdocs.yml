@@ -1,1 +1,9 @@
-site_name: My Docs
+site_name: AI Readiness Course
+
+nav:
+  - Home: index.md
+  - Tutorial: tutorial.md
+  - Slides: slides/index.html  # Embeds the Slidev presentation
+
+theme:
+  name: material
