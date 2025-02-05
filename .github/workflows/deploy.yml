@@ -1,0 +1,48 @@
+name: Deploy MkDocs + Slidev to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Runs when pushing to main branch
+  workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install MkDocs
+        run: |
+          pip install mkdocs-material mkdocs-with-pdf
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Slidev
+        run: npm install -g @slidev/cli
+
+      - name: Build Slidev slides
+        run: |
+          cd slides
+          npx slidev build
+          mv dist ../docs/slides
+
+      - name: Deploy MkDocs to GitHub Pages
+        run: mkdocs gh-deploy --force
