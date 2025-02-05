@@ -39,7 +39,7 @@ jobs:
         run: |
           cd slides
           npm install  # Ensures vite is installed
-          npm install -g @slidev/cli @slidev/theme-seriph vite
+          npm install @slidev/cli @slidev/theme-seriph vite --save-dev
 
       - name: Build Slidev slides
         run: |
