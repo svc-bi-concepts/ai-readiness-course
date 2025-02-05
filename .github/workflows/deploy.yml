@@ -36,7 +36,7 @@ jobs:
           node-version: '20'
 
       - name: Install Slidev
-        run: npm install -g @slidev/cli
+        run: npm install -g @slidev/cli vite
 
       - name: Build Slidev slides
         run: |
