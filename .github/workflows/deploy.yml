@@ -41,11 +41,10 @@ jobs:
           npm install  # Ensures vite is installed
           npm install @slidev/cli @slidev/theme-seriph vite --save-dev
 
-      - name: Build Slidev slides
+      - name: Deploy MkDocs to GitHub Pages
         run: |
-          cd slides
-          npx slidev build
-          mv dist ../docs/slides
+          ls -lah docs/slides  # Debugging: Show what’s inside docs/slides
+          mkdocs gh-deploy --force
 
       - name: Deploy MkDocs to GitHub Pages
         run: mkdocs gh-deploy --force
